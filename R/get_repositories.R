@@ -1,28 +1,32 @@
-#' Get a list of repositories for a given user
+#' Get a list of repositories for a given user or organization
 #'
-#' @param user A string providing the GitHub user name of interest.
+#' @param user A string providing the GitHub user name or organization name of
+#'   interest.
 #' @return
 #' A tibble is returned with the following three columns:
-#' * user: A string with the provided GitHub user name.
+#' * user: A string with the provided GitHub user name or organization.
 #' * name: A string giving the name of the repository.
 #' * fork: A logical, specifying if the repository is a fork.
 #'
 #' @export
 #' @examples
-#' get_repositories_user("kellijohnson-NOAA")
+#' get_repositories("kellijohnson-NOAA")
 #' data <- purrr::map_df(
 #'   c("kellijohnson-NOAA", "msupernaw"),
-#'   get_repositories_user
+#'   get_repositories
 #' )
-get_repositories_user <- function(user) {
+#' FIMS_repos <- get_repositories("NOAA-FIMS", "orgs")
+get_repositories <- function(x, type = c("users", "orgs")) {
+  type <- match.arg(type)
   git_data <- gh::gh(
-    endpoint = "GET /users/{user_name}/repos",
-    user_name = user
+    endpoint = "GET /{type}/{x}/repos",
+    type = type,
+    x = x
   )
   git_data |>
     tibble::as_tibble_col(column_name = "data") |>
     dplyr::mutate(
-      user = user,
+      user = x,
       name = purrr::map_chr(data, "name"),
       fork = purrr::map_lgl(data, "fork")
     ) |>
