@@ -9,10 +9,13 @@ License: GPL (>= 3) | file LICENSE
 Imports: 
     blastula,
     dplyr,
+    gh,
     httr,
     jsonlite,
     kableExtra,
-    knitr
+    knitr,
+    purrr,
+    tibble
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
