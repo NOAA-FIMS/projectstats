@@ -103,9 +103,8 @@ get_issues <- function(org = "NOAA-FIMS", repo = "FIMS", from = -Inf) {
 #' )
 #' FIMS_repos <- get_repositories("NOAA-FIMS", "orgs")
 get_repositories <- function(
-  org = "NOAA-FIMS",
-  type = c("orgs", "users")
-) {
+    org = "NOAA-FIMS",
+    type = c("orgs", "users")) {
   type <- match.arg(type)
   res <- gh_pg(
     endpoint = "GET /{type}/{org}/repos",
