@@ -15,14 +15,8 @@ utils::globalVariables(c(
 #'   also be a user name rather than an organization. The default is
 #' `"NOAA-FIMS"`.
 #' @param repo The name of the GitHub repository. The default is `"FIMS"`.
-#' @param from The date that you would like to start the activity from. The
-#'   default is negative infinity, which leads to all entries being returned.
-#'   But, another viable option is `Sys.Date() - 1`, which provides everything
-#'   since yesterday. Note that some entries prior to this entry will also be
-#'   returned if they are included in the same page, as the entire page is
-#'   returned.
 #' @return
-#' A 32-column tibble, that was created from the `json` list that is returned
+#' A 33-column tibble, that was created from the `json` list that is returned
 #' from [gh::gh()], is returned. The returned tibble contains the following
 #' columns:
 #' * url
@@ -62,24 +56,16 @@ utils::globalVariables(c(
 #' * state_reason
 #' @examples
 #' \dontrun{
-#' get_issues(repo = "FIMS", org = "NOAA-FIMS", from = Sys.Date() - 1)
+#' get_issues(repo = "FIMS", org = "NOAA-FIMS")
 #' }
 #' @export
-get_issues <- function(org = "NOAA-FIMS", repo = "FIMS", from = -Inf) {
-  # A conditional function passed to [gh_pg()]
-  conditional_date <- function(response, start_date = from) {
-    last_at <- parsedate::parse_iso_8601(
-      response[[length(response)]][["created_at"]]
-    )
-    last_at >= as.POSIXct(start_date)
-  }
-
+get_issues <- function(org = "NOAA-FIMS", repo = "FIMS") {
   # Get the data from GitHub
-  req <- gh_pg(
+  req <- gh::gh(
     endpoint = "GET /repos/{org}/{repo}/issues",
     org = org,
     repo = repo,
-    cond = conditional_date
+    .limit = Inf
   )
 
   # Convert to a data.frame
@@ -113,10 +99,11 @@ get_repositories <- function(
     org = "NOAA-FIMS",
     type = c("orgs", "users")) {
   type <- match.arg(type)
-  res <- gh_pg(
+  res <- gh::gh(
     endpoint = "GET /{type}/{org}/repos",
     type = type,
-    org = org
+    org = org,
+    .limit = Inf
   )
 
   # Make the json a tibble by selecting the columns one wants to unnest
@@ -162,16 +149,13 @@ get_repositories <- function(
 #'   xlab = "Day since first star",
 #'   ylab = "Cumulative stars"
 #' )
-get_stargazers <- function(org = "NOAA-FIMS", repo = "FIMS", from = -Inf) {
-  res <- gh_pg(
+get_stargazers <- function(org = "NOAA-FIMS", repo = "FIMS") {
+  res <- gh::gh(
     endpoint = "GET /repos/{org}/{repo}/stargazers",
     org = org,
     repo = repo,
     .accept = "application/vnd.github.v3.star+json",
-    # Return all values where condition is always TRUE
-    cond = function(...) {
-      TRUE
-    }
+    .limit = Inf
   )
 
   # Create a temporary object so the column names can be passed

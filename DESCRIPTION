@@ -13,7 +13,6 @@ Imports:
     jsonlite,
     kableExtra,
     knitr,
-    parsedate,
     purrr,
     tibble,
     tidyr

@@ -4,7 +4,7 @@
 \alias{get_issues}
 \title{Query the Github API for a list of issues associated with a repository}
 \usage{
-get_issues(org = "NOAA-FIMS", repo = "FIMS", from = -Inf)
+get_issues(org = "NOAA-FIMS", repo = "FIMS")
 }
 \arguments{
 \item{org}{The name of the organization that contains the \code{repo}. This can
@@ -12,16 +12,9 @@ also be a user name rather than an organization. The default is
 \code{"NOAA-FIMS"}.}
 
 \item{repo}{The name of the GitHub repository. The default is \code{"FIMS"}.}
-
-\item{from}{The date that you would like to start the activity from. The
-default is negative infinity, which leads to all entries being returned.
-But, another viable option is \code{Sys.Date() - 1}, which provides everything
-since yesterday. Note that some entries prior to this entry will also be
-returned if they are included in the same page, as the entire page is
-returned.}
 }
 \value{
-A 32-column tibble, that was created from the \code{json} list that is returned
+A 33-column tibble, that was created from the \code{json} list that is returned
 from \code{\link[gh:gh]{gh::gh()}}, is returned. The returned tibble contains the following
 columns:
 \itemize{
@@ -70,6 +63,6 @@ issues is not returned.
 }
 \examples{
 \dontrun{
-get_issues(repo = "FIMS", org = "NOAA-FIMS", from = Sys.Date() - 1)
+get_issues(repo = "FIMS", org = "NOAA-FIMS")
 }
 }
