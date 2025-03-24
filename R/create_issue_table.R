@@ -1,3 +1,9 @@
+# To remove the WARNING
+# no visible binding for global variable
+utils::globalVariables(c(
+  "label_col"
+))
+
 #' Creates a table of issues
 #'
 #' This function takes a \code{json} input table generated from the Github

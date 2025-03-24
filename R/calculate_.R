@@ -1,3 +1,9 @@
+# To remove the WARNING
+# no visible binding for global variable
+utils::globalVariables(c(
+  "org", "repo", "day", "stars"
+))
+
 #' Calculate the cumulative number of stars
 #'
 #' For each combination of organization and repository, calculate the
