@@ -1,0 +1,98 @@
+---
+title: "GitHub Repositories"
+format:
+  html:
+    theme: default
+---
+
+
+## Why
+
+Within the National Stock Assessment Program (NSAP), it is a priority to place versioned code on GitHub Enterprise to facilitate ensuring that the code is automatically backed up without extra work from the individual user. This summary lists the number of repositories each user has under their personal GitHub account and how many of those are forks, which do not need to be on Enterprise.
+
+```{r setup}
+#| echo: false
+#| warning: false
+
+library(projectstats)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(purrr)
+library(tidyr)
+
+# All GitHub user names for people in NSAP
+user_names <- c(
+    "Steven-Saul-NOAA",
+    # Abby
+    "AndreaChan-NOAA",
+    "ClaireGonzales-NOAA",
+    # Jeff
+    # Len
+    "kellijohnson-NOAA",
+    "msupernaw",
+    "Melissa-Karp",
+    "ChristineStawitz-NOAA",
+    "Andrea-Havron-NOAA",
+    "Bai-Li-NOAA",
+    "k-doering-NOAA",
+    "PatrickLynch-NOAA",
+    "e-perl-NOAA",
+    "Schiano-NOAA",
+    "sbreitbart-NOAA"
+)
+
+projects <- data.frame(
+    organization = c("NOAA-FIMS", "nmfs-ost", "nmfs-ost", "nmfs-ost"),
+    repository = c("FIMS", "DisMAP", "asar", "ss3-source-code")
+)
+```
+
+## Data
+
+The following GitHub users names were searched: `r glue::glue_collapse({user_names}, sep = ", ", last = ", and ")`. For each username, we were able to determine the number of repositories that were held by the user and whether not not each repository represented original work or a fork of someone else's work.
+
+```{r pull}
+# Pull the data from GitHub for each user name
+repository_data <- purrr::map_df(
+    user_names,
+    get_repositories,
+    type = "users"
+)
+
+# Get the number of stars for FIMS and dismap
+stars_data <- purrr::map2_df(
+    .x = projects[, "organization"],
+    .y = projects[, "repository"],
+    .f = get_stargazers,
+    .id = "project"
+) |>
+    calculate_cumulative_stars()
+```
+
+
+## Results
+```{r results}
+#| tbl-cap: "Number of forked and original repositories held by each GitHub user name."
+#| echo: false
+
+repository_data |>
+    dplyr::mutate(fork = ifelse(fork, "forked", "original")) |>
+    dplyr::group_by(login, fork) |>
+    dplyr::count() |>
+    tidyr::pivot_wider(names_from = "fork", values_from = "n") |>
+    dplyr::arrange(dplyr::desc(original)) |>
+    knitr::kable()
+```
+
+```{r plots}
+#| fig-cap: "Number of stars since the first day a repository was starred."
+#| echo: false
+ggplot2::ggplot(
+    stars_data,
+    ggplot2::aes(day, cumulative_stars, color = project)
+) +
+    ggplot2::geom_line() +
+    ggplot2::xlab("Days since first star") +
+    ggplot2::ylab("Number of stars")
+```
