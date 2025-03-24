@@ -96,10 +96,11 @@ get_issues <- function(org = "NOAA-FIMS", repo = "FIMS", from = -Inf) {
 #'
 #' @export
 #' @examples
-#' get_repositories("kellijohnson-NOAA")
+#' get_repositories("kellijohnson-NOAA", type = "users")
 #' data <- purrr::map_df(
 #'   c("kellijohnson-NOAA", "msupernaw"),
-#'   get_repositories
+#'   get_repositories,
+#'   type = "users"
 #' )
 #' FIMS_repos <- get_repositories("NOAA-FIMS", "orgs")
 get_repositories <- function(

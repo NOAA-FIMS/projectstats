@@ -11,7 +11,7 @@ build_email(from_, to_, creds, body_, table_iss, table_pr, footer_)
 
 \item{to_}{recipient email address}
 
-\item{creds}{A credential file of the type supported by {blastula}}
+\item{creds}{A credential file of the type supported by \pkg{blastula}}
 
 \item{body_}{The text to precede the table}
 

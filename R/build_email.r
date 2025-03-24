@@ -5,7 +5,7 @@
 #'
 #' @param from_ sender email address
 #' @param to_ recipient email address
-#' @param creds A credential file of the type supported by {blastula}
+#' @param creds A credential file of the type supported by \pkg{blastula}
 #' @param body_ The text to precede the table
 #' @param table_iss the issue table
 #' @param table_pr The PR table
