@@ -25,6 +25,16 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/NSAP_summary.html">Summarizing NSAP contributions</a>
+    </li>
+  </ul></li>
       </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -74,7 +84,7 @@ are:</p><ul><li><p>login: A string with the provided GitHub user name or organiz
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_repositories</span><span class="op">(</span><span class="st">"kellijohnson-NOAA"</span>, type <span class="op">=</span> <span class="st">"users"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 26 × 81</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 27 × 81</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        id node_id name  full_name private owner$login html_url description fork </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 8.20<span style="color: #949494;">e</span>8 R_kgDO… .git… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   FALSE</span>
@@ -83,11 +93,11 @@ are:</p><ul><li><p>login: A string with the provided GitHub user name or organiz
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 7.24<span style="color: #949494;">e</span>8 R_kgDO… Brai… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   TRUE </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 6.65<span style="color: #949494;">e</span>8 R_kgDO… depl… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   TRUE </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2.35<span style="color: #949494;">e</span>8 MDEwOl… Diri… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 9.27<span style="color: #949494;">e</span>8 R_kgDO… Fish… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2.17<span style="color: #949494;">e</span>7 MDEwOl… git-… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 3.05<span style="color: #949494;">e</span>7 MDEwOl… iwcc… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 3.61<span style="color: #949494;">e</span>8 MDEwOl… kell… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 16 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 9.54<span style="color: #949494;">e</span>8 R_kgDO… expl… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 9.27<span style="color: #949494;">e</span>8 R_kgDO… Fish… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2.17<span style="color: #949494;">e</span>7 MDEwOl… git-… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 3.05<span style="color: #949494;">e</span>7 MDEwOl… iwcc… kellijoh… FALSE   <span style="color: #949494;">&lt;chr [1]&gt;</span>   https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span>   FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 17 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 90 more variables: owner$id &lt;list&gt;, $node_id &lt;list&gt;, $avatar_url &lt;list&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   $gravatar_id &lt;list&gt;, $url &lt;list&gt;, $html_url &lt;list&gt;, $followers_url &lt;list&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   $following_url &lt;list&gt;, $gists_url &lt;list&gt;, $starred_url &lt;list&gt;,</span></span>

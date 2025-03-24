@@ -28,6 +28,16 @@ issues is not returned."><!-- mathjax --><script src="https://cdnjs.cloudflare.c
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/NSAP_summary.html">Summarizing NSAP contributions</a>
+    </li>
+  </ul></li>
       </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -50,7 +60,7 @@ issues is not returned.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_issues</span><span class="op">(</span>org <span class="op">=</span> <span class="st">"NOAA-FIMS"</span>, repo <span class="op">=</span> <span class="st">"FIMS"</span>, from <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_issues</span><span class="op">(</span>org <span class="op">=</span> <span class="st">"NOAA-FIMS"</span>, repo <span class="op">=</span> <span class="st">"FIMS"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -66,19 +76,10 @@ also be a user name rather than an organization. The default is
 <dt id="arg-repo">repo<a class="anchor" aria-label="anchor" href="#arg-repo"></a></dt>
 <dd><p>The name of the GitHub repository. The default is <code>"FIMS"</code>.</p></dd>
 
-
-<dt id="arg-from">from<a class="anchor" aria-label="anchor" href="#arg-from"></a></dt>
-<dd><p>The date that you would like to start the activity from. The
-default is negative infinity, which leads to all entries being returned.
-But, another viable option is <code>Sys.Date() - 1</code>, which provides everything
-since yesterday. Note that some entries prior to this entry will also be
-returned if they are included in the same page, as the entire page is
-returned.</p></dd>
-
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A 32-column tibble, that was created from the <code>json</code> list that is returned
+    <p>A 33-column tibble, that was created from the <code>json</code> list that is returned
 from <code><a href="https://gh.r-lib.org/reference/gh.html" class="external-link">gh::gh()</a></code>, is returned. The returned tibble contains the following
 columns:</p><ul><li><p>url</p></li>
 <li><p>repository_url</p></li>
@@ -120,7 +121,7 @@ entries are NULL if it was in fact an issue. Columns include <code>url</code>,
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="fu">get_issues</span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"FIMS"</span>, org <span class="op">=</span> <span class="st">"NOAA-FIMS"</span>, from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">get_issues</span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"FIMS"</span>, org <span class="op">=</span> <span class="st">"NOAA-FIMS"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
