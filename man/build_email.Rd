@@ -11,7 +11,7 @@ build_email(from_, to_, creds, body_, table_iss, table_pr, footer_)
 
 \item{to_}{recipient email address}
 
-\item{creds}{A credential file of the type supported by code{blastula}}
+\item{creds}{A credential file of the type supported by {blastula}}
 
 \item{body_}{The text to precede the table}
 
@@ -22,12 +22,14 @@ build_email(from_, to_, creds, body_, table_iss, table_pr, footer_)
 \item{footer_}{the text to follow the table}
 }
 \value{
-the email body
+A string with the email body.
 }
 \description{
 This function compiles the tables with some email text and sends it
-using \code{blastula::smtp_send.}
+using \code{blastula::smtp_send()}.
 }
 \seealso{
-\link[blastula:credential_helpers]{blastula::creds}
+\itemize{
+\item \code{\link[blastula:credential_helpers]{blastula::creds()}}
+}
 }
