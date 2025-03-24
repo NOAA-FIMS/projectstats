@@ -44,7 +44,9 @@ merge_gh_pages <- function(res, res2) {
 #' @seealso
 #' * [merge_gh_pages()]
 #' @noRd
-gh_pg <- function(..., cond = function(...) {TRUE}) {
+gh_pg <- function(..., cond = function(...) {
+                    TRUE
+                  }) {
   res <- r1 <- gh::gh(...)
   while (isTRUE(cond(r1)) && gh:::gh_has_next(r1)) {
     r1 <- gh::gh_next(r1)
