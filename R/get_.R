@@ -1,3 +1,9 @@
+# To remove the WARNING
+# no visible binding for global variable
+utils::globalVariables(c(
+  "owner", "starred_at"
+))
+
 #' Query the Github API for a list of issues associated with a repository
 #'
 #' The issues for a given repository and all of their metadata are returned as
