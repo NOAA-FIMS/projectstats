@@ -174,3 +174,17 @@ get_stargazers <- function(org = "NOAA-FIMS", repo = "FIMS") {
       day = as.integer(date - date[1])
     )
 }
+
+get_milestones <- function(org = "NOAA-FIMS", repo = "FIMS") {
+  res <- gh::gh(
+    endpoint = "GET /repos/{org}/{repo}/milestones",
+    org = org,
+    repo = repo,
+    .accept = "application/vnd.github.v3.star+json",
+    .limit = Inf
+  )
+  res |>
+    jsonlite::toJSON() |>
+    jsonlite::fromJSON() |>
+    tibble::as_tibble()
+}
