@@ -1,8 +1,12 @@
 Package: projectstats
 Title: Write Emails from Github API Outputs
 Version: 0.0.0.9000
-Authors@R: 
-    person("Christine", "Stawitz", , "christine.stawitz@noaa.gov", role = c("aut", "cre"))
+Authors@R: c(
+    person(c("Kelli", "F."), "Johnson", , "kelli.johnson@noaa.gov", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5149-451X")),
+    person(c("Christine", "C."), "Stawitz", role = "aut",
+           comment = c(ORCID = "0000-0003-3122-4501"))
+    )
 Description: This uses an API key to retrieve information about pull
     requests and issues in a Github repository and email about it.
 License: GPL (>= 3) | file LICENSE
