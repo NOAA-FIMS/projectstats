@@ -112,7 +112,7 @@ get_repositories <- function(
   if (length(temp) == 0) {
     return(NULL)
   }
-  temp |>
+  out <- temp |>
     dplyr::select(
       # Leave all data frames nested, i.e., owner, mirror_url, license,
       # permissions, and security_and_analysis
@@ -125,6 +125,23 @@ get_repositories <- function(
     dplyr::mutate(
       login = unlist(purrr::pluck(owner, "login"))
     )
+  # language and homepage columns are difficult because when they are not
+  # populated they are data frames with 0 columns but when they are populated
+  # they are a list of strings
+  if (inherits(out[["language"]], "data.frame")) {
+    out[["language"]] <- as.list(rep(NA_character_, NROW(out[["language"]])))
+  }
+  if (inherits(out[["homepage"]], "data.frame")) {
+    out[["homepage"]] <- rep(NA_character_, NROW(out[["homepage"]]))
+  } else {
+    out <- tidyr::unnest(
+      out,
+      homepage,
+      keep_empty = TRUE,
+      ptype = list(homepage = "string")
+    )
+  }
+  return(out)
 }
 
 #' Get the history of stars for a repository
