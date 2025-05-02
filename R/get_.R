@@ -192,6 +192,47 @@ get_stargazers <- function(org = "NOAA-FIMS", repo = "FIMS") {
     )
 }
 
+#' Get the milestones for a given repository
+#'
+#' Get the open milestones for a given repository and the associated metadata
+#' for each milestone.
+#'
+#' @inheritParams get_issues
+#' @return
+#' A tibble with 16 columns is returned. The columns are:
+#' \itemize{
+#' \item{url}{A string with the URL to the API for the milestone.}
+#' \item{html_url}{A string with the URL to GitHub for the milestone.}
+#' \item{labels_url}{A string with the URL to the API for the labels for the
+#'   milestone.}
+#' \item{id}{An integer with the ID of the milestone.}
+#' \item{node_id}{A string with the node ID of the milestone.}
+#' \item{number}{An integer with the number of the milestone.}
+#' \item{title}{A string with the title of the milestone.}
+#' \item{description}{A string with the description of the milestone.}
+#' \item{creator}{A list with the creator of the milestone.}
+#' \item{open_issues}{An integer with the number of open issues for the
+#'   milestone.}
+#' \item{closed_issues}{An integer with the number of closed issues for the
+#'   milestone.}
+#' \item{state}{A string with the state of the milestone, which should be
+#'   `"open"` because only open milestones are returned from this function.}
+#' \item{created_at}{A string with the date and time the milestone was
+#'   created.}
+#' \item{updated_at}{A string with the date and time the milestone was last
+#'   updated.}
+#' \item{due_on}{A string with the date and time the milestone is due. If there
+#'   is no due date the value will be `NULL`.}
+#' \item{closed_at}{A string with the date and time the milestone was closed. If
+#'   there is no closed date the value will be `NULL`.}
+#' }
+#' @export
+#' @examples
+#' # Get the open milestones for the FIMS repository and print how many open and
+#' # closed issues there are for each milestone.
+#' fims_milestones <- get_milestones("NOAA-FIMS", "FIMS")
+#' fims_milestones |>
+#'   dplyr::select(title, open_issues, closed_issues)
 get_milestones <- function(org = "NOAA-FIMS", repo = "FIMS") {
   res <- gh::gh(
     endpoint = "GET /repos/{org}/{repo}/milestones",
