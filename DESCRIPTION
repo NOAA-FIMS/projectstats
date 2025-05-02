@@ -6,7 +6,7 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-5149-451X")),
     person(c("Christine", "C."), "Stawitz", role = "aut",
            comment = c(ORCID = "0000-0003-3122-4501"))
-    )
+  )
 Description: This uses an API key to retrieve information about pull
     requests and issues in a Github repository and email about it.
 License: GPL (>= 3) | file LICENSE
