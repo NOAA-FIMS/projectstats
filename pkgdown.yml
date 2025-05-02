@@ -3,7 +3,7 @@ pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   NSAP_summary: NSAP_summary.html
-last_built: 2025-05-02T21:04Z
+last_built: 2025-05-02T21:12Z
 urls:
   reference: https://nmfs-fish-tools.github.io/projectstats/reference
   article: https://nmfs-fish-tools.github.io/projectstats/articles
